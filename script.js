@@ -1,9 +1,7 @@
 const msgEl = document.getElementById('msg');
-const btnEl = document.getElementById('play-again');
 
 const randomNum = getRandomNumber();
 console.log(randomNum);
-
 
 window.SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -28,13 +26,13 @@ function checkNumber(msg) {
 
   // check if msg is valid number
   if (Number.isNaN(num)) {
-    msgEl.innerHTML += `<div>That is NOT a valid number</div>`;
+    msgEl.innerHTML += `<div class="alert">That is NOT a valid number</div>`;
     return;
   }
 
   // check range of number 1-100
   if (num < 1 || num > 100) {
-    msgEl.innerHTML += '<div>Number MUST be between 1-100';
+    msgEl.innerHTML += '<div class="alert">Number MUST be between 1-100';
     return;
   }
 
@@ -46,9 +44,9 @@ function checkNumber(msg) {
     <button class="play-again" id="play-again">Play Again</button>
   `;
   } else if (num > randomNum) {
-    msgEl.innerHTML += '<div> GO LOWER </div>';
+    msgEl.innerHTML += '<div class="alert"> GO LOWER </div>';
   } else {
-    msgEl.innerHTML += '<div> GO HIGHER </div>';
+    msgEl.innerHTML += '<div class="alert"> GO HIGHER </div>';
   }
 }
 
@@ -70,7 +68,7 @@ recognition.addEventListener('result', onSpeak);
 recognition.addEventListener('end', () => recognition.start());
 
 //play again listeners
-document.body.addEventListener('click', e => {
+document.body.addEventListener('click', (e) => {
   if (e.target.id == 'play-again') {
     window.location.reload();
   }

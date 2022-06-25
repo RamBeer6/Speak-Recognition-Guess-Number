@@ -31,12 +31,15 @@ p {
   border: 0;
   border-radius: 5px;
   margin-top: 10px;
-  visibility: hidden;
 }
 
 .msg {
   font-size: 1.5em;
   margin-top: 40px;
+}
+
+.alert {
+  margin-top: 10px;
 }
 
 .box {
