@@ -1,6 +1,9 @@
 const msgEl = document.getElementById('msg');
+const btnEl = document.getElementById('play-again');
 
 const randomNum = getRandomNumber();
+console.log(randomNum);
+
 
 window.SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -38,10 +41,10 @@ function checkNumber(msg) {
   // Check num to randomNum
   if (num === randomNum) {
     document.body.innerHTML = `
-    <h2>congrats! You have guessed the number! <br><br>
-    it was ${num}</h2>
-    <button class="play-again" id="play-again">Play Again</button>  
-    `;
+    <h2>Congrats! You have guessed the number! <br><br>
+    It was ${num}</h2>
+    <button class="play-again" id="play-again">Play Again</button>
+  `;
   } else if (num > randomNum) {
     msgEl.innerHTML += '<div> GO LOWER </div>';
   } else {
@@ -67,6 +70,8 @@ recognition.addEventListener('result', onSpeak);
 recognition.addEventListener('end', () => recognition.start());
 
 //play again listeners
-document.body.addEventListener('click', (e) => {
-  window.location.reload();
+document.body.addEventListener('click', e => {
+  if (e.target.id == 'play-again') {
+    window.location.reload();
+  }
 });
