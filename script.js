@@ -1,7 +1,6 @@
 const msgEl = document.getElementById('msg');
 
 const randomNum = getRandomNumber();
-console.log('The Number is:', randomNum);
 
 window.SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -26,8 +25,7 @@ function checkNumber(msg) {
 
   // check if msg is valid number
   if (Number.isNaN(num)) {
-    msgEl.innerHTML += `<div>You Said:${msg}</div>
-<div>That is NOT a valid number</div>`;
+    msgEl.innerHTML += `<div>That is NOT a valid number</div>`;
     return;
   }
 
@@ -70,5 +68,5 @@ recognition.addEventListener('end', () => recognition.start());
 
 //play again listeners
 document.body.addEventListener('click', (e) => {
-    window.location.reload();
-})
+  window.location.reload();
+});
